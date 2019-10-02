@@ -1166,32 +1166,28 @@ function getBoundary(){
     var bdary = new BMap.Boundary();
     //获取行政区域
     bdary.get(name, function(rs){
-        //-清楚地面覆盖物
-        //map.clearOverlays();
-        //-计算行政区域的点有多少个
-        var count = rs.boundaries.length;
-        for(var i = 0; i < count; i++){
-            var ply = new BMap.Polygon(
-                rs.boundaries[i],
-                {
-                    //--设置填充颜色
-                    fillColor : "#000000",
-                    //--设置填充透明度
-                    fillOpacity : 0.2,
-                    //--设置边线的粗细
-                    strokeWeight : 2,
-                    //--设置边线的透明度 0 - 1
-                    strokeOpacity : 1,
-                    //--设置边线样式为实线或虚线，取值 solid 或 dashed
-                    //!dashed虚线会引起拖动地图卡顿
-                    strokeStyle : "solid",
-                    //--设置边线颜色
-                    strokeColor : "#df504c",    
-                }
-            );
-            //-添加覆盖物
-            map.addOverlay(ply);
-        }
+        var ply = new BMap.Polygon(
+            rs.boundaries[0],
+            {
+                //--设置填充颜色
+                fillColor : "#000000",
+                //--设置填充透明度
+                fillOpacity : 0.2,
+                //--设置边线的粗细
+                strokeWeight : 2,
+                //--设置边线的透明度 0 - 1
+                strokeOpacity : 1,
+                //--设置边线样式为实线或虚线，取值 solid 或 dashed
+                //!dashed虚线会引起拖动地图卡顿
+                strokeStyle : "solid",
+                //--设置边线颜色
+                strokeColor : "#df504c"
+            }
+        );
+        map.addOverlay(ply);
+        ply.addEventListener("click",function(){
+            map.closeInfoWindow();
+        })
     });
 }
 
