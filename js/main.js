@@ -1099,9 +1099,9 @@ var iGuideBtn = document.getElementById("iGuideBtn");
 var iSchoolBtn = document.getElementById("iSchoolBtn");
 
 var markerArray = [];
-var infoWindow = null;
+var infoWindow;
 
-var iZoom = 15;
+var iZoom = 14;
 
 if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
     iZoom = 13;
@@ -1113,19 +1113,17 @@ var name = "拱墅区";
 var map = new BMap.Map('AllMap');
 
 //设置视角中心点
-map.setCurrentCity(name);
 map.setCenter(name);
-map.centerAndZoom(map.getCenter(),iZoom);
+var iCenter = map.getCenter();
+map.centerAndZoom(iCenter,iZoom);
 
 //启用滚轮放大缩小
 map.enableScrollWheelZoom();
 
 //设置地图样式
 map.setMapStyleV2({ 
-    // styleId: "44d85fb284e7907ae76f31be6a7847b3"
     styleJson: styleJson
 });
-
 
 //AJAX请求
 $.ajax({
@@ -1160,8 +1158,7 @@ window.onload = function(){
     $(".iGuideGroups").on("click",".iGuideItem",GroupClick);
     //引导-返回集团列表
     $(".iGuideSchools").on("click",".iSchoolBtn",returnGroup);
-
-    getBoundary()
+    getBoundary();
 
 }
 
@@ -1247,7 +1244,7 @@ map.addEventListener("zoomend", function(){
     for(var i = 0; i < markerArray.length; i++){
         var label = markerArray[i].getLabel();
         if(zoom >= 17){
-            label.setStyle({ display:"block"});
+            label.setStyle({display:"block"});
         }else{
             label.setStyle({display:"none"});
         }
