@@ -1,0 +1,32 @@
+
+body, html, p, button{ padding: 0; margin: 0; }
+button{ border: 0; outline: none; background: none; }
+body, html {width: 100%; height: 100%; font-family:"微软雅黑"; overflow: hidden;}
+.AllMap{width:100%;height:100%;}
+
+.iGuide{ width: 300px; position: absolute; right: -300px; bottom: 0;  transition: all 0.5s; background-color: rgba(0,0,0,0.5); border-radius: 10px 0 0 0; box-shadow: 0px 0px 5px #fff; }
+.iGuide.active{ right: 0px; transition: all 0.5s; }
+.iGuideBtn{ width: 40px; padding: 5px 10px; position: absolute; left: -40px; bottom: 0; border-radius: 10px 0 0 0; font-size: 16px; color: #fff; box-shadow: -2px 0px 3px #fff; cursor: pointer; background-color: rgba(0,0,0,0.5); }
+
+.iGuideGroups, .iGuideSchools{ width: 100%; position: absolute; right: 0; bottom: 0; transition: all 0.5s; padding: 10px 0; }
+.iGuideItem{ color: #fff; background-repeat: no-repeat; background-position: left center; border-radius: 10px; cursor: pointer; user-select: none; }
+.iGuideGroups .iGuideItem{ font-size: 20px; margin: 0 10px; background-size: 40px 40px; padding-left: 50px;  line-height: 50px; }
+.iGuideSchools .iGuideItem{ width: calc(100% - 80px); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 16px; margin: 0 20px;  background-size: 30px 30px; padding-left: 40px; line-height: 40px; }
+.iGuideSchools{ padding: 60px 0 0 0; visibility: hidden; opacity: 0; }
+.iSchoolBtn{ width: calc(100% - 40px); height: 40px; line-height: 40px; background: #fff; color: #999; position: absolute; left: 0; top: 0; margin: 10px 20px; text-align: center; border-radius: 10px; cursor: pointer; }
+
+.modalTitle{ line-height: 30px; padding-bottom: 10px; border-bottom: 1px solid #eee; font-size: 18px; }
+.modalContent{ margin-top: 10px; padding-bottom: 10px; max-height: 440px; overflow-y: auto; }
+.modalInfoTitle{ font-size: 14px; line-height: 30px; padding: 0 10px; background-color: #eee; color: #666; border-radius: 4px; border: 1px solid #e6e6e6; }
+.modalInfoContent{ font-size: 12px; line-height: 24px; color: #999; margin: 10px 0; }
+.modalInfoContent img{ width: 100%; display: block; }
+
+/* 百度地图样式覆盖 信息窗口 */
+/* 左上角 */
+.BMap_pop>div:nth-child(1)>div{ border-radius: 10px 0 0 0; }
+/* 右上角 */
+.BMap_pop>div:nth-child(3)>div{ border-radius: 0 10px 0 0; }
+/* 左下角 */
+.BMap_pop>div:nth-child(5)>div{ border-radius: 0 0 0 10px; }
+/* 右下角 */
+.BMap_pop>div:nth-child(7)>div{ border-radius: 0 0 10px 0; }

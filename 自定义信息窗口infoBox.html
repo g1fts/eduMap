@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <style type="text/css">
+            .infoBoxContent{font-size:12px;}
+            .infoBoxContent .title{background:url(title.jpg) no-repeat;height:42px;width:272px;}
+            .infoBoxContent .title strong{font-size:14px;line-height:42px;padding:0 10px 0 5px;}
+            .infoBoxContent .title .price{color:#FFFF00;}
+            .infoBoxContent .list{width:268px;border:solid 1px #4FA5FC;border-top:none;background:#fff;height:260px;}
+            .infoBoxContent .list ul{margin:0;padding:5px;list-style:none;}
+            .infoBoxContent .list ul li {float:left;width:255px;border-bottom:solid 1px #4FA5FC;padding:2px 0;}
+            .infoBoxContent .list ul .last{border:none;}
+            .infoBoxContent .list ul img{width:53px;height:42px;margin-right:5px;}
+            .infoBoxContent .list ul p{padding:0;margin:0;}
+            .infoBoxContent .left{float:left;}
+            .infoBoxContent .rmb{float:right;color:#EB6100;font-size:14px;font-weight:bold;}
+            .infoBoxContent a{color:#0041D9;text-decoration:none;}
+        </style>
+        <!-- <script src="http://api.map.baidu.com/api?v=1.2"></script><script type="text/javascript" src="http://api.map.baidu.com/getscript?v=1.2&amp;ak=&amp;services=&amp;t=20130716024057"></script><link rel="stylesheet" type="text/css" href="http://api.map.baidu.com/res/12/bmap.css">
+        <script type="text/javascript" src="../src/InfoBox_min.js"></script> -->
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//api.map.baidu.com/api?v=3.0&ak=R0lg8GyKHQI6hUGCuS3OGGVNN3tWVAtN"></script>
+        <script type="text/javascript" src="./js/InfoBox_min.js"></script> -->
+        
+        
+        
+        <title>Creating and Using an InfoBox</title>
+        </head>
+        <body>
+            <div id="map_canvas" style="width: 600px; height: 500px; overflow: hidden; position: relative; z-index: 0; background-color: rgb(243, 241, 236); color: rgb(0, 0, 0); text-align: left;"><div style="overflow: visible; position: absolute; z-index: 0; left: 0px; top: 0px; cursor: url(&quot;http://api.map.baidu.com/images/openhand.cur&quot;) 8 8, default;"><div class="BMap_mask" style="position: absolute; left: 0px; top: 0px; z-index: 9; overflow: hidden; user-select: none; width: 600px; height: 500px;"></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;"><div style="position: absolute; height: 0px; width: auto; left: 0px; top: 0px; z-index: 800;"><div class="infoBox" style="background: url(&quot;tipbox.gif&quot;) center top no-repeat; width: 270px; height: 300px; position: absolute; user-select: none; bottom: -300px; left: 165px;"><img src="close.png" align="right" style="position:absolute;right:0px;cursor:pointer;margin:1px 1px 0 0"><div class="infoBoxContent"><div class="title"><strong>中海雅园</strong><span class="price">均价43000</span></div><div class="list"><ul><li><div class="left"><img src="house3.jpg"></div><div class="left"><a target="_blank" href="http://map.baidu.com">中海雅园南北通透四居室</a><p>4室2厅，205.00平米，3层</p></div><div class="rmb">760万</div></li><li><div class="left"><img src="house1.jpg"></div><div class="left"><a target="_blank" href="http://map.baidu.com">中海雅园四居室还带保姆间</a><p>2室1厅，112.00平米，16层</p></div><div class="rmb">300万</div></li><li><div class="left"><img src="house2.jpg"></div><div class="left"><a target="_blank" href="http://map.baidu.com">《有钥匙 随时看》花园水系</a><p>3室2厅，241.00平米，16层</p></div><div class="rmb">400万</div></li><li><div class="left"><img src="house3.jpg"></div><div class="left"><a target="_blank" href="http://map.baidu.com">富力城D区正规楼王大三居</a><p>3室3厅，241.00平米，17层</p></div><div class="rmb">600万</div></li><li class="last"><div class="left"><img src="house1.jpg"></div><div class="left"><a target="_blank" href="http://map.baidu.com">富力城豪，身份人士的象征</a><p>4室2厅，213.90平米，25层</p></div><div class="rmb">700万</div></li></ul></div></div></div></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 700;"><span class="BMap_Marker BMap_noprint" unselectable="on" "="" style="position: absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;http://api.map.baidu.com/images/blank.gif&quot;); width: 19px; height: 25px; left: 290px; top: 302px; z-index: -8011406;" title=""></span></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 600;"></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 500;"></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 400;"><span class="BMap_Marker" unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 290px; top: 302px; z-index: -8011406;"><div style="position: absolute; margin: 0px; padding: 0px; width: 19px; height: 25px; overflow: hidden;"><img src="http://api.map.baidu.com/images/marker_red_sprite.png" style="border:none;left:0px; top:0px; position:absolute;"></div></span></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 300;"><span unselectable="on" style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 20px; height: 11px; left: 294px; top: 316px;"><div style="position: absolute; margin: 0px; padding: 0px; width: 20px; height: 11px; overflow: hidden;"><img src="http://api.map.baidu.com/images/marker_red_sprite.png" style="border:none;left:-19px; top:-13px; position:absolute;"></div></span></div><div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;"></div></div><div style="position: absolute; top: 0px; left: 0px; z-index: 1;"><div style="position: absolute; z-index: -100; left: 300px; top: 250px;"><img src="http://online1.map.bdimg.com/tile/?qt=tile&amp;x=12644&amp;y=4732&amp;z=16&amp;styles=pl&amp;udt=20150518" style="position: absolute; border: none; width: 256px; height: 256px; left: -4px; top: 48px; opacity: 1;"><img src="http://online0.map.bdimg.com/tile/?qt=tile&amp;x=12643&amp;y=4732&amp;z=16&amp;styles=pl&amp;udt=20150518" style="position: absolute; border: none; width: 256px; height: 256px; left: -260px; top: 48px; opacity: 1;"><img src="http://online2.map.bdimg.com/tile/?qt=tile&amp;x=12645&amp;y=4732&amp;z=16&amp;styles=pl&amp;udt=20150518" style="position: absolute; border: none; width: 256px; height: 256px; left: 252px; top: 48px; opacity: 1;"><img src="http://online2.map.bdimg.com/tile/?qt=tile&amp;x=12644&amp;y=4733&amp;z=16&amp;styles=pl&amp;udt=20150518" style="position: absolute; border: none; width: 256px; height: 256px; left: -4px; top: -208px; opacity: 1;"><img src="http://online4.map.bdimg.com/tile/?qt=tile&amp;x=12642&amp;y=4732&amp;z=16&amp;styles=pl&amp;udt=20150518" style="position: absolute; border: none; width: 256px; height: 256px; left: -516px; top: 48px; opacity: 1;"><img src="http://online1.map.bdimg.com/tile/?qt=tile&amp;x=12643&amp;y=4733&amp;z=16&amp;styles=pl&amp;udt=20150518" style="position: absolute; border: none; width: 256px; height: 256px; left: -260px; top: -208px; opacity: 1;"><img src="http://online3.map.bdimg.com/tile/?qt=tile&amp;x=12645&amp;y=4733&amp;z=16&amp;styles=pl&amp;udt=20150518" style="position: absolute; border: none; width: 256px; height: 256px; left: 252px; top: -208px; opacity: 1;"><img src="http://online0.map.bdimg.com/tile/?qt=tile&amp;x=12642&amp;y=4733&amp;z=16&amp;styles=pl&amp;udt=20150518" style="position: absolute; border: none; width: 256px; height: 256px; left: -516px; top: -208px; opacity: 1;"><img src="http://online2.map.bdimg.com/tile/?qt=tile&amp;x=12643&amp;y=4734&amp;z=16&amp;styles=pl&amp;udt=20150518" style="position: absolute; border: none; width: 256px; height: 256px; left: -260px; top: -464px; opacity: 1;"><img src="http://online3.map.bdimg.com/tile/?qt=tile&amp;x=12644&amp;y=4734&amp;z=16&amp;styles=pl&amp;udt=20150518" style="position: absolute; border: none; width: 256px; height: 256px; left: -4px; top: -464px; opacity: 1;"><img src="http://online4.map.bdimg.com/tile/?qt=tile&amp;x=12645&amp;y=4734&amp;z=16&amp;styles=pl&amp;udt=20150518" style="position: absolute; border: none; width: 256px; height: 256px; left: 252px; top: -464px; opacity: 1;"><img src="http://online1.map.bdimg.com/tile/?qt=tile&amp;x=12642&amp;y=4734&amp;z=16&amp;styles=pl&amp;udt=20150518" style="position: absolute; border: none; width: 256px; height: 256px; left: -516px; top: -464px; opacity: 1;"></div></div><div style="position: absolute; top: 0px; left: 0px; z-index: 2;"></div></div><div class=" anchorBL" style="height: 32px; position: absolute; z-index: 10; text-size-adjust: none; bottom: 0px; right: auto; top: auto; left: 1px;"><a title="到百度地图查看此区域" target="_blank" href="http://map.baidu.com/?sr=1" style="outline: none;"><img style="border:none;width:77px;height:32px" src="http://api.map.baidu.com/images/copyright_logo.png"></a></div><div id="zoomer" style="position:absolute;z-index:0;top:0px;left:0px;overflow:hidden;visibility:hidden;cursor:url(http://api.map.baidu.com/images/openhand.cur) 8 8,default"><div class="BMap_zoomer" style="top:0;left:0;"></div><div class="BMap_zoomer" style="top:0;right:0;"></div><div class="BMap_zoomer" style="bottom:0;left:0;"></div><div class="BMap_zoomer" style="bottom:0;right:0;"></div></div><div unselectable="on" class=" BMap_cpyCtrl anchorBL" style="cursor: default; white-space: nowrap; color: black; background: none; font: 11px/15px arial, sans-serif; bottom: 2px; right: auto; top: auto; left: 81px; position: absolute; z-index: 10; text-size-adjust: none;"><span _cid="1" style="display: inline;"><span style="font-size:11px">© 2015 Baidu</span></span></div></div>
+        
+        <button id="close">close</button>
+        <button id="open">open</button>
+        <button id="show">show</button>
+        <button id="hide">hide</button>
+        <button id="enableAutoPan">enableAutoPan</button>
+        <button id="disableAutoPan">disableAutoPan</button>
+         <script type="text/javascript">
+        var map = new BMap.Map('map_canvas');
+        var poi = new BMap.Point(116.307852,40.057031);
+        map.centerAndZoom(poi, 16);
+        var html = 
+'<div class="modal">'+
+    '<div class="modalTop">'+
+        '<div class="modalTitle">大关中学教育集团</div>'+
+        '<button class="modalClose">X</button>'+
+    '</div>'+
+    '<div class="modalContent">'+
+        '<div class="modalCSwitch">'+
+           '<div class="modalCInfo active">'+
+                '<div class="modalCITop">户籍儿童教育服务区</div>'+
+                '<div class="modalCIBox">1.余塘巷以北（浅水湾花园部分），草营巷以南，湖墅路以西，莫干山路以东区域户籍适龄儿童;2.长板巷（夹城巷）以北，大关路以南，上塘高架以西，湖墅路以东区域（除昆仑公馆小区）户籍适龄儿童。3.大关路以北，上塘路以西，运河以东，登云路以南户籍适龄儿童。</div>'+
+                '<div class="modalCITop">随迁子女教育服务区</div>'+
+                '<div class="modalCIBox">1.余塘巷以北（浅水湾花园部分），草营巷以南，湖墅路以西，莫干山路以东区域户籍适龄儿童;2.长板巷（夹城巷）以北，大关路以南，上塘高架以西，湖墅路以东区域（除昆仑公馆小区）户籍适龄儿童。3.大关路以北，上塘路以西，运河以东，登云路以南户籍适龄儿童。</div>'+
+                '<div class="modalCITop">电话</div>'+
+                '<div class="modalCIBox">0577-0515-0616</div>'+
+                '<div class="modalCITop">温馨提示</div>'+
+                '<div class="modalCIBox">报名请携带报名材料：房产证及复印件、户口簿及复印件、预防接种卡！</div>'+
+            '</div>'+
+            '<div class="modalCMap">'+
+                '<img src="./images/daguanxiaoxue_moganshan.jpg" alt="">'+
+            '</div>'+
+        '</div>'+
+        '<div class="modalCSwitchBar">'+
+            '<button class="active">学校信息</button>'+
+            '<button>学校地图</button>'+
+        '</div>'+
+    '</div>'+
+'</div>';
+
+        var infoBox = new BMapLib.InfoBox(map,html,{
+            boxStyle:{
+                background:"url('tipbox.gif') no-repeat center top"
+                ,width: "270px"
+                ,height: "300px"
+            }
+            ,closeIconMargin: "1px 1px 0 0"
+            ,enableAutoPan: true
+            ,align: INFOBOX_AT_TOP
+        });
+        
+        var marker = new BMap.Marker(poi);
+        map.addOverlay(marker);
+        //infoBox.open(marker);
+        marker.enableDragging();
+        $("close").onclick = function(){
+            infoBox.close();
+        }
+        $("open").onclick = function(){
+            infoBox.open(marker);
+        }
+        $("show").onclick = function(){
+            infoBox.show();
+        }
+        $("hide").onclick = function(){
+            infoBox.hide();
+        }
+        $("enableAutoPan").onclick = function(){
+            infoBox.enableAutoPan();
+        }
+        $("disableAutoPan").onclick = function(){
+            infoBox.disableAutoPan();
+        }
+        function $(id){
+            return document.getElementById(id);
+        }
+        
+        </script>
+        
+        
+        </body>
+</html>

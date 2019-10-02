@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .box{ width: 100px; height: 100px; background-color: blue; }
+        .box:hover{ animation: boxOut 1s; }
+        @keyframes boxOut {
+            from{
+                width: 100px;
+                height: 100px;
+            }to{
+                width: 200px;
+            }
+        }
+    </style>
+    <title>transition</title>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        function guideBtn(){
+    iGuide.classList.toggle("active");
+}
+
+function GroupClick(){
+    var groupIndex = $(this).index();
+    var schoolIndex = iData[groupIndex].school;
+    iGuideSchools.innerHTML = "<button class='iSchoolBtn' id='iSchoolBtn'>返回集团列表</button>";
+    for(var i = 0; i < schoolIndex.length; i++){
+        var iSchoolItem = document.createElement("div");
+        iSchoolItem.className = "iGuideItem";
+        iSchoolItem.style.backgroundImage = "url("+schoolIndex[i].icon+")";
+        iSchoolItem.innerText = schoolIndex[i].name;
+        iGuideSchools.appendChild(iSchoolItem);
+    }
+    iGuide.style.height = iGuideSchools.offsetHeight + "px";
+    iGuideGroups.style.bottom = iGuideSchools.offsetHeight + "px";
+    iGuideGroups.style.opacity = 0;
+    iGuideGroups.style.visibility = "hidden";
+    iGuideSchools.style.bottom = "0px";
+    iGuideSchools.style.opacity = 1;
+    iGuideSchools.style.visibility = "visible";
+}
+
+function returnGroup(){
+    iGuide.style.height = iGuideGroups.offsetHeight + "px";
+    iGuideSchools.style.bottom = -iGuideSchools.offsetHeight + "px";
+    iGuideSchools.style.opacity = 0;
+    iGuideSchools.style.visibility = "hidden";
+    iGuideGroups.style.bottom = "0px";
+    iGuideGroups.style.opacity = 1;
+    iGuideGroups.style.visibility = "visible";
+}
+    </script>
+</body>
+</html>
