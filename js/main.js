@@ -26,7 +26,7 @@ $.ajax({
         }
     }
 });
-$(function(){
+window.onload = function(){
     //默认引导层的高度等于集团组的高度
     iGuide.style.height = iGuideGroups.offsetHeight + "px";
     //引导-收缩事件
@@ -36,7 +36,7 @@ $(function(){
     //引导-返回集团列表
     $(".iGuideSchools").on("click",".iSchoolBtn",returnGroup);
 
-})
+}
 
 var markerArray = [];
 function addSchoolMarker(schoolData){
@@ -44,7 +44,7 @@ function addSchoolMarker(schoolData){
         var pt = new BMap.Point(schoolData[i].lat, schoolData[i].lng);
         var myIcon = new BMap.Icon(schoolData[i].icon, new BMap.Size(30,30),{imageSize: new BMap.Size(30,30)});
         var marker = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
-        var label = new BMap.Label(schoolData[i].name,{offset: new BMap.Size(35,0)} );
+        var label = new BMap.Label(schoolData[i].name,{offset: new BMap.Size(-70,35)} );
         label.setStyle({ fontSize:"20px", lineHeight:"28px", background:"none",border:"none",color:"white",display:"none"})
         marker.setLabel(label);
         map.addOverlay(marker);
@@ -136,7 +136,6 @@ map.addEventListener("zoomend", function(){
         }else{
             label.setStyle({display:"none"});
         }
-        //marker.setLabel(label);
     }
     
 });
