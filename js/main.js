@@ -42,10 +42,10 @@ var markerArray = [];
 function addSchoolMarker(schoolData){
     for(var i = 0; i < schoolData.length; i++){
         var pt = new BMap.Point(schoolData[i].lat, schoolData[i].lng);
-        var myIcon = new BMap.Icon(schoolData[i].icon, new BMap.Size(20,20),{imageSize: new BMap.Size(20,20)});
+        var myIcon = new BMap.Icon(schoolData[i].icon, new BMap.Size(30,30),{imageSize: new BMap.Size(30,30)});
         var marker = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
-        var label = new BMap.Label(schoolData[i].name,{offset: new BMap.Size(25,0)} );
-        label.setStyle({ fontSize:"16px", lineHeight:"20px", background:"none",border:"none",color:"white",display:"none"})
+        var label = new BMap.Label(schoolData[i].name,{offset: new BMap.Size(35,0)} );
+        label.setStyle({ fontSize:"20px", lineHeight:"28px", background:"none",border:"none",color:"white",display:"none"})
         marker.setLabel(label);
         map.addOverlay(marker);
         markerArray.push(marker);
@@ -82,7 +82,7 @@ function openInfo(content,pt,marker){
 var map = new BMap.Map('AllMap');
 
 //设置视角中心点
-map.centerAndZoom(new BMap.Point(120.155153,30.347163), 14);
+map.centerAndZoom(new BMap.Point(120.155153,30.347163), 15);
 
 //启用滚轮放大缩小
 map.enableScrollWheelZoom();
