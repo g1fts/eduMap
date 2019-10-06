@@ -1195,11 +1195,11 @@ function getBoundary(){
 
 function addSchoolMarker(schoolData,groupData){
     var pt = new BMap.Point(schoolData.lat, schoolData.lng);
-    var myIcon = new BMap.Icon(schoolData.icon, new BMap.Size(30,30),{imageSize: new BMap.Size(30,30)});
+    var myIcon = new BMap.Icon(schoolData.icon, new BMap.Size(20,20),{imageSize: new BMap.Size(20,20)});
     var marker = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
     var lableContent = "<div><p style='font-size: 20px; line-height: 24px;'>"+groupData.name+"</p><p style='font-size:16px; line-height: 20px;'>"+schoolData.name+"</p></div>"
-    var label = new BMap.Label(lableContent,{offset: new BMap.Size(0,35)} );
-    label.setStyle({ textAlign:"center", background:"none",border:"none",color:"white",display:"none", position:"absolute", left:"50%",transform:"translateX(-40%)"})
+    var label = new BMap.Label(lableContent,{offset: new BMap.Size(10,22)} );
+    label.setStyle({ textAlign:"center", background:"none",border:"none",color:"white", position:"absolute", left:"50%",transform:"translate(-50%,0)",display:"none"})
     marker.setLabel(label);
     map.addOverlay(marker);
     markerArray.push(marker);
@@ -1239,10 +1239,20 @@ map.addEventListener("zoomend", function(){
     var zoom = map.getZoom();
     for(var i = 0; i < markerArray.length; i++){
         var label = markerArray[i].getLabel();
-        if(zoom >= 17){
+        var icon = markerArray[i].getIcon();
+        var step = (zoom - iZoom) * 10;
+        if(zoom >= 18){
             label.setStyle({display:"block"});
-        }else{
-            label.setStyle({display:"none"});
+        }
+        else{
+            label.setStyle({display:"none"}); 
+        }
+        if(zoom >= iZoom){
+            icon.setSize(new BMap.Size(20 + step,20 + step));
+            icon.setImageSize(new BMap.Size(20 + step,20 + step));
+            markerArray[i].setIcon(icon);
+            label.setOffset(new BMap.Size(10 + (zoom - iZoom)*6,22 + step));
+            markerArray[i].setLabel(label);
         }
     }
     
