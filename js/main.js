@@ -2,13 +2,14 @@ var styleJson = [{
     "featureType": "land",
     "elementType": "geometry",
     "stylers": {
-        "color": "#242f3eff"
+        "color": "#19171cff"
     }
 }, {
     "featureType": "manmade",
     "elementType": "geometry",
     "stylers": {
-        "color": "#242f3eff"
+        "color": "#242f3eff",
+        "visibility": "off"
     }
 }, {
     "featureType": "water",
@@ -136,7 +137,8 @@ var styleJson = [{
     "featureType": "green",
     "elementType": "geometry",
     "stylers": {
-        "color": "#263b3eff"
+        "color": "#263b3eff",
+        "visibility": "off"
     }
 }, {
     "featureType": "nationalwaysign",
@@ -226,19 +228,13 @@ var styleJson = [{
     "featureType": "tertiaryway",
     "elementType": "labels.text.fill",
     "stylers": {
-        "color": "#759879ff"
+        "color": "#ffffffff"
     }
 }, {
     "featureType": "fourlevelway",
     "elementType": "labels.text.fill",
     "stylers": {
-        "color": "#759879ff"
-    }
-}, {
-    "featureType": "highway",
-    "elementType": "labels.text.fill",
-    "stylers": {
-        "color": "#759879ff"
+        "color": "#ffffffff"
     }
 }, {
     "featureType": "highway",
@@ -287,12 +283,6 @@ var styleJson = [{
     "elementType": "labels.text.stroke",
     "stylers": {
         "color": "#1a2e1cff"
-    }
-}, {
-    "featureType": "nationalway",
-    "elementType": "labels.text.fill",
-    "stylers": {
-        "color": "#759879ff"
     }
 }, {
     "featureType": "nationalway",
@@ -1001,31 +991,13 @@ var styleJson = [{
     "featureType": "road",
     "elementType": "labels.text.fill",
     "stylers": {
-        "color": "#759879ff"
+        "color": "#ffffffff"
     }
 }, {
     "featureType": "road",
     "elementType": "labels.text.stroke",
     "stylers": {
-        "color": "#1a2e1cff"
-    }
-}, {
-    "featureType": "provincialway",
-    "elementType": "labels.text.fill",
-    "stylers": {
-        "color": "#759879ff"
-    }
-}, {
-    "featureType": "cityhighway",
-    "elementType": "labels.text.fill",
-    "stylers": {
-        "color": "#759879ff"
-    }
-}, {
-    "featureType": "arterial",
-    "elementType": "labels.text.fill",
-    "stylers": {
-        "color": "#759879ff"
+        "color": "#ffffffff"
     }
 }, {
     "featureType": "provincialway",
@@ -1085,7 +1057,152 @@ var styleJson = [{
     "featureType": "estate",
     "elementType": "geometry",
     "stylers": {
-        "color": "#2a3341ff"
+        "color": "#2a3341ff",
+        "visibility": "off"
+    }
+}, {
+    "featureType": "education",
+    "elementType": "labels",
+    "stylers": {
+        "visibility": "off"
+    }
+}, {
+    "featureType": "medical",
+    "elementType": "labels",
+    "stylers": {
+        "visibility": "off"
+    }
+}, {
+    "featureType": "scenicspots",
+    "elementType": "labels",
+    "stylers": {
+        "visibility": "off"
+    }
+}, {
+    "featureType": "transportation",
+    "elementType": "labels",
+    "stylers": {
+        "visibility": "off"
+    }
+}, {
+    "featureType": "entertainment",
+    "elementType": "geometry",
+    "stylers": {
+        "visibility": "off"
+    }
+}, {
+    "featureType": "scenicspots",
+    "elementType": "geometry",
+    "stylers": {
+        "visibility": "off"
+    }
+}, {
+    "featureType": "medical",
+    "elementType": "geometry",
+    "stylers": {
+        "visibility": "off"
+    }
+}, {
+    "featureType": "education",
+    "elementType": "geometry",
+    "stylers": {
+        "visibility": "off"
+    }
+}, {
+    "featureType": "manmade",
+    "elementType": "labels",
+    "stylers": {
+        "visibility": "off"
+    }
+}, {
+    "featureType": "building",
+    "elementType": "geometry",
+    "stylers": {
+        "visibility": "off"
+    }
+}, {
+    "featureType": "shopping",
+    "elementType": "geometry",
+    "stylers": {
+        "visibility": "off"
+    }
+}, {
+    "featureType": "transportation",
+    "elementType": "geometry",
+    "stylers": {
+        "visibility": "off"
+    }
+}, {
+    "featureType": "poilabel",
+    "elementType": "labels",
+    "stylers": {
+        "visibility": "off"
+    }
+}, {
+    "featureType": "districtlabel",
+    "elementType": "labels",
+    "stylers": {
+        "visibility": "on"
+    }
+}, {
+    "featureType": "districtlabel",
+    "elementType": "labels.icon",
+    "stylers": {
+        "visibility": "on"
+    }
+}, {
+    "featureType": "highway",
+    "elementType": "labels.text.fill",
+    "stylers": {
+        "color": "#ffffffff"
+    }
+}, {
+    "featureType": "nationalway",
+    "elementType": "labels.text.fill",
+    "stylers": {
+        "color": "#ffffffff"
+    }
+}, {
+    "featureType": "provincialway",
+    "elementType": "labels.text.fill",
+    "stylers": {
+        "color": "#ffffffff"
+    }
+}, {
+    "featureType": "cityhighway",
+    "elementType": "labels.text.fill",
+    "stylers": {
+        "color": "#ffffffff"
+    }
+}, {
+    "featureType": "arterial",
+    "elementType": "labels.text.fill",
+    "stylers": {
+        "color": "#ffffffff"
+    }
+}, {
+    "featureType": "local",
+    "elementType": "labels.text.fill",
+    "stylers": {
+        "color": "#ffffffff"
+    }
+}, {
+    "featureType": "scenicspotsway",
+    "elementType": "geometry",
+    "stylers": {
+        "visibility": "off"
+    }
+}, {
+    "featureType": "universityway",
+    "elementType": "geometry",
+    "stylers": {
+        "visibility": "off"
+    }
+}, {
+    "featureType": "vacationway",
+    "elementType": "geometry",
+    "stylers": {
+        "visibility": "off"
     }
 }];
 
@@ -1172,7 +1289,7 @@ function getBoundary(){
                 //--设置填充颜色
                 fillColor : "#000000",
                 //--设置填充透明度
-                fillOpacity : 0.2,
+                fillOpacity : 0.8,
                 //--设置边线的粗细
                 strokeWeight : 2,
                 //--设置边线的透明度 0 - 1
@@ -1195,11 +1312,11 @@ function getBoundary(){
 
 function addSchoolMarker(schoolData,groupData){
     var pt = new BMap.Point(schoolData.lat, schoolData.lng);
-    var myIcon = new BMap.Icon(schoolData.icon, new BMap.Size(20,20),{imageSize: new BMap.Size(20,20)});
+    var myIcon = new BMap.Icon(schoolData.icon, new BMap.Size(10,10),{imageSize: new BMap.Size(10,10)});
     var marker = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
     var lableContent = "<div><p style='font-size: 20px; line-height: 24px;'>"+groupData.name+"</p><p style='font-size:16px; line-height: 20px;'>"+schoolData.name+"</p></div>"
-    var label = new BMap.Label(lableContent,{offset: new BMap.Size(10,22)} );
-    label.setStyle({ textAlign:"center", background:"none",border:"none",color:"white", position:"absolute", left:"50%",transform:"translate(-50%,0)",display:"none"})
+    var label = new BMap.Label(lableContent,{offset: new BMap.Size(10,12)} );
+    label.setStyle({ textAlign:"center", background:"none",border:"none",color:"white", position:"absolute", left:"50%",transform:"translate(-50%,0)", display: 'none'})
     marker.setLabel(label);
     map.addOverlay(marker);
     markerArray.push(marker);
@@ -1240,18 +1357,18 @@ map.addEventListener("zoomend", function(){
     for(var i = 0; i < markerArray.length; i++){
         var label = markerArray[i].getLabel();
         var icon = markerArray[i].getIcon();
-        var step = (zoom - iZoom) * 10;
-        if(zoom >= 18){
+        var step = (zoom - iZoom) * 5;
+        if(zoom >= 16){
             label.setStyle({display:"block"});
         }
         else{
             label.setStyle({display:"none"}); 
         }
         if(zoom >= iZoom){
-            icon.setSize(new BMap.Size(20 + step,20 + step));
-            icon.setImageSize(new BMap.Size(20 + step,20 + step));
+            icon.setSize(new BMap.Size(10 + step,10 + step));
+            icon.setImageSize(new BMap.Size(10 + step,10 + step));
             markerArray[i].setIcon(icon);
-            label.setOffset(new BMap.Size(10 + (zoom - iZoom)*6,22 + step));
+            label.setOffset(new BMap.Size(10 + (zoom - iZoom)*2,12 + step));
             markerArray[i].setLabel(label);
         }
     }
