@@ -8,8 +8,8 @@ var styleJson = [{
     "featureType": "manmade",
     "elementType": "geometry",
     "stylers": {
-        "color": "#242f3eff",
-        "visibility": "off"
+        "visibility": "on",
+        "color": "#242f3eff"
     }
 }, {
     "featureType": "water",
@@ -137,8 +137,8 @@ var styleJson = [{
     "featureType": "green",
     "elementType": "geometry",
     "stylers": {
-        "color": "#263b3eff",
-        "visibility": "off"
+        "visibility": "on",
+        "color": "#263b3eff"
     }
 }, {
     "featureType": "nationalwaysign",
@@ -348,7 +348,7 @@ var styleJson = [{
     "featureType": "estatelabel",
     "elementType": "labels",
     "stylers": {
-        "visibility": "off"
+        "visibility": "on"
     }
 }, {
     "featureType": "estatelabel",
@@ -360,7 +360,7 @@ var styleJson = [{
     "featureType": "businesstowerlabel",
     "elementType": "labels",
     "stylers": {
-        "visibility": "off"
+        "visibility": "on"
     }
 }, {
     "featureType": "businesstowerlabel",
@@ -1057,8 +1057,8 @@ var styleJson = [{
     "featureType": "estate",
     "elementType": "geometry",
     "stylers": {
-        "color": "#2a3341ff",
-        "visibility": "off"
+        "visibility": "on",
+        "color": "#2a3341ff"
     }
 }, {
     "featureType": "education",
@@ -1112,13 +1112,13 @@ var styleJson = [{
     "featureType": "manmade",
     "elementType": "labels",
     "stylers": {
-        "visibility": "off"
+        "visibility": "on"
     }
 }, {
     "featureType": "building",
     "elementType": "geometry",
     "stylers": {
-        "visibility": "off"
+        "visibility": "on"
     }
 }, {
     "featureType": "shopping",
@@ -1204,16 +1204,37 @@ var styleJson = [{
     "stylers": {
         "visibility": "off"
     }
+}, {
+    "featureType": "estatelabel",
+    "elementType": "labels.text.fill",
+    "stylers": {
+        "color": "#ffffffff"
+    }
+}, {
+    "featureType": "estatelabel",
+    "elementType": "labels.text.stroke",
+    "stylers": {
+        "color": "#000000ff"
+    }
+}, {
+    "featureType": "businesstowerlabel",
+    "elementType": "labels.text.fill",
+    "stylers": {
+        "color": "#ffffffff"
+    }
+}, {
+    "featureType": "businesstowerlabel",
+    "elementType": "labels.text.stroke",
+    "stylers": {
+        "color": "#000000ff"
+    }
 }];
 
-
-var iData = null;
 var iGuide = document.getElementById("iGuide");
-var iGuideGroups = document.getElementById("iGuideGroups");
-var iGroups = iGuideGroups.getElementsByTagName("div");
-var iGuideSchools = document.getElementById("iGuideSchools");
 var iGuideBtn = document.getElementById("iGuideBtn");
-var iSchoolBtn = document.getElementById("iSchoolBtn");
+var iGroups = null;
+var iSchool = null;
+var aitem = 0;
 
 var markerArray = [];
 var infoWindow;
@@ -1250,33 +1271,104 @@ $.ajax({
     success: function(data){
         iData = data;
         for(var i = 0; i < data.length; i++){
+            var iGroup = document.createElement('div');
+            var iGroupItem = document.createElement('div');
+            var iSchools = document.createElement('div');
 
-            var iGroupItem = document.createElement("div");
-            iGroupItem.className = "iGuideItem";
-            iGroupItem.style.backgroundImage = "url("+data[i].icon+")";
+            iGuide.append(iGroup);
+            iGroup.className = 'iGroup';
+
+            iGroupItem.className = 'iGroupItem';
             iGroupItem.innerText = data[i].name;
-            iGroupItem.setAttribute("data-group",data[i].name)
-            iGuideGroups.appendChild(iGroupItem);
+            iGroupItem.style.backgroundImage = 'url(' + data[i].icon + ')';
+            iGroup.append(iGroupItem);
+
+            iSchools.className = 'iSchools';
+            iGroup.append(iSchools);
+            
             //添加学校标注点
             var sData = data[i].school;
             for(var j = 0; j < sData.length; j ++){
-                //console.log(data[i]);
+                var iSchoolItem = document.createElement('div');
+                iSchoolItem.className = 'iSchoolItem';
+                iSchoolItem.innerText = sData[j].name;
+                iSchoolItem.style.backgroundImage = 'url(' + sData[j].icon + ')';
+                iSchools.append(iSchoolItem);
                 addSchoolMarker(sData[j],data[i]);
             }
         }
     }
 });
-window.onload = function(){
-    //默认引导层的高度等于集团组的高度
-    iGuide.style.height = iGuideGroups.offsetHeight + "px";
-    //引导-收缩事件
-    iGuideBtn.addEventListener("click",guideBtn);
-    //引导-集团组点击事件
-    $(".iGuideGroups").on("click",".iGuideItem",GroupClick);
-    //引导-返回集团列表
-    $(".iGuideSchools").on("click",".iSchoolBtn",returnGroup);
-    getBoundary();
 
+
+function iClick(){
+    for (let i = 0; i < iGroups.length; i++) {
+        const el = iGroups[i];
+        var groupItem = el.querySelector('.iGroupItem')
+        var groupSubBox = el.querySelector('.iSchools')
+        el.setAttribute('data-group',groupItem.offsetHeight);
+        el.setAttribute('data-schools',groupSubBox.offsetHeight);
+        el.style.height = el.getAttribute('data-group') + 'px';
+        aitem = aitem + parseInt(el.getAttribute('data-group'));
+        el.addEventListener('click',()=>{
+            iGuideBtn.innerText = '返回集团';
+            iGroups.forEach((ele,index) => {
+                ele.classList.remove('active');
+                ele.style.height = 0;
+                if(el == ele){
+                    ele.classList.add('active');
+                    ele.style.height = parseInt(el.getAttribute('data-group')) + parseInt(el.getAttribute('data-schools')) + 'px';
+                }
+            });
+        })
+        el.querySelectorAll('.iSchoolItem').forEach((elSchool,indexSchool) => {
+            elSchool.addEventListener('click',function(){
+                var data = iData[i].school[indexSchool];
+                var point = new BMap.Point(data.lat, data.lng);
+                map.setZoom(19);
+                map.panTo(point);
+            })
+        });
+    }
+    iGuideBtn.addEventListener('click',function(){
+        if(document.querySelector('.iGroup.active')){
+            document.querySelector('.iGroup.active').classList.remove('active');
+            iGroups.forEach(elem => {
+                elem.style.height = elem.getAttribute('data-group') + 'px';
+            });
+            iGuideBtn.innerText = '收起列表';
+        }else{
+            if(iGuide.classList.contains('active')){
+                iGuide.style.bottom = -aitem + 'px';
+                iGuide.classList.remove('active');
+                iGuideBtn.innerText = '展开列表';
+            }else{
+                iGuide.style.bottom = 0;
+                iGuideBtn.innerText = '收起列表';
+                iGuide.classList.add('active');
+            }
+        }
+    })
+    iGuide.style.bottom = -aitem + 'px';
+}
+
+map.addEventListener('click',function(){
+    iGroups.forEach(elem => {
+        elem.classList.remove('active');
+        elem.style.height = elem.getAttribute('data-group') + 'px';
+        iGuide.style.bottom = -aitem + 'px';
+        iGuide.classList.remove('active');
+        iGuideBtn.innerText = '展开列表';
+    });
+})
+
+window.onload = function(){
+    iGroups = document.querySelectorAll('.iGroup');
+    setTimeout(function(){
+        iGuide.style.visibility = 'visible';
+    },2000)
+    getBoundary();
+    iClick()
 }
 
 function getBoundary(){
@@ -1289,7 +1381,7 @@ function getBoundary(){
                 //--设置填充颜色
                 fillColor : "#000000",
                 //--设置填充透明度
-                fillOpacity : 0.8,
+                fillOpacity : 0.5,
                 //--设置边线的粗细
                 strokeWeight : 2,
                 //--设置边线的透明度 0 - 1
@@ -1304,6 +1396,7 @@ function getBoundary(){
         map.addOverlay(ply);
         ply.addEventListener("click",function(){
             map.closeInfoWindow();
+
         })
     });
 }
@@ -1336,7 +1429,7 @@ function openInfo(content,pt,marker){
     var modalTitleHTML = modalTitle(content);
     var modalContentHTML = modalContent(content);
     var opts = {
-        width : 400,     // 信息窗口宽度
+        width : 300,     // 信息窗口宽度
         height : 0,
         title : modalTitleHTML , // 信息窗口标题
         enableMessage:false,//设置允许信息窗发送短息
@@ -1416,46 +1509,6 @@ function modalContent(data){
 
 function guideBtn(){
     iGuide.classList.toggle("active");
-}
-
-function GroupClick(){
-    var groupIndex = $(this).index();
-    var schoolIndex = iData[groupIndex].school;
-    iGuideSchools.innerHTML = "<button class='iSchoolBtn' id='iSchoolBtn'>返回集团列表</button>";
-    for(var i = 0; i < schoolIndex.length; i++){
-        var iSchoolItem = document.createElement("div");
-        iSchoolItem.className = "iGuideItem";
-        iSchoolItem.style.backgroundImage = "url("+schoolIndex[i].icon+")";
-        iSchoolItem.innerText = schoolIndex[i].name;
-        iSchoolItem.title = schoolIndex[i].name;
-        iGuideSchools.appendChild(iSchoolItem);
-        panCenter(iSchoolItem, schoolIndex[i]);
-    }
-    iGuide.style.height = iGuideSchools.offsetHeight + "px";
-    iGuideGroups.style.bottom = iGuideSchools.offsetHeight + "px";
-    iGuideGroups.style.opacity = 0;
-    iGuideGroups.style.visibility = "hidden";
-    iGuideSchools.style.bottom = "0px";
-    iGuideSchools.style.opacity = 1;
-    iGuideSchools.style.visibility = "visible";
-}
-
-function panCenter(iSchoolItem,data){
-    iSchoolItem.addEventListener("click", function(){
-        var point = new BMap.Point(data.lat, data.lng);
-        map.setZoom(19);
-        map.panTo(point);
-    })
-}
-
-function returnGroup(){
-    iGuide.style.height = iGuideGroups.offsetHeight + "px";
-    iGuideSchools.style.bottom = -iGuideSchools.offsetHeight + "px";
-    iGuideSchools.style.opacity = 0;
-    iGuideSchools.style.visibility = "hidden";
-    iGuideGroups.style.bottom = "0px";
-    iGuideGroups.style.opacity = 1;
-    iGuideGroups.style.visibility = "visible";
 }
 function imgLoad(){
     infoWindow.redraw();

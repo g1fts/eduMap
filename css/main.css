@@ -4,16 +4,14 @@ button{ border: 0; outline: none; background: none; }
 body, html {width: 100%; height: 100%; font-family:"微软雅黑"; overflow: hidden;}
 .AllMap{width:100%;height:100%; overflow: hidden;}
 
-.iGuide{ width: 260px; position: absolute; right: -260px; bottom: 0;  transition: all 0.3s ease-in-out; background-color: rgba(0,0,0,0.5); border-radius: 10px 0 0 0; box-shadow: 0px 0px 5px #fff; }
-.iGuide.active{ right: 0px; transition: all 0.3s ease-in-out; }
-.iGuideBtn{ width: 40px; padding: 5px 10px; position: absolute; left: -40px; bottom: 0; border-radius: 10px 0 0 0; font-size: 16px; color: #fff; box-shadow: -2px 0px 3px #fff; cursor: pointer; background-color: rgba(0,0,0,0.5); }
+.iGuide{ width: 260px; position: absolute; right: 0; bottom: 0; background-color: rgba(0,0,0,0.5); border-radius: 10px 0 0 0; box-shadow: 0px 0px 5px #fff; color: #fff; transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); visibility: hidden; }
+.iGroup{ overflow: hidden; transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); }
+.iSchools{ overflow: hidden; }
+.iGroupItem, .iSchoolItem{ background-repeat: no-repeat; cursor: pointer; user-select: none; }
+.iGroupItem{ font-size: 20px; line-height: 40px; padding: 6px 0 6px 60px; background-size: 40px 40px; background-position: 10px center; }
+.iSchoolItem{ font-size: 16px; line-height: 30px; padding: 6px 0 6px 70px; background-size: 30px 30px; background-position: 20px center;  }
+.iGuideBtn{ width: 100%; text-align: center; line-height: 40px; font-size: 20px; background-color: rgba(255, 255, 255, .8); color: #333; border-radius: 10px 0 0 0; cursor: pointer; }
 
-.iGuideGroups, .iGuideSchools{ width: 100%; position: absolute; right: 0; bottom: 0; transition: all 0.3s ease-in-out; padding: 10px 0; }
-.iGuideItem{ color: #fff; background-repeat: no-repeat; background-position: left center; border-radius: 10px; cursor: pointer; user-select: none; }
-.iGuideGroups .iGuideItem{ font-size: 20px; margin: 0 10px; background-size: 40px 40px; padding-left: 50px;  line-height: 50px; }
-.iGuideSchools .iGuideItem{ width: calc(100% - 80px); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 16px; margin: 0 20px;  background-size: 30px 30px; padding-left: 40px; line-height: 40px; }
-.iGuideSchools{ padding: 60px 0 0 0; visibility: hidden; opacity: 0; }
-.iSchoolBtn{ width: calc(100% - 40px); height: 40px; line-height: 40px; background: #fff; color: #999; position: absolute; left: 0; top: 0; margin: 10px 20px; text-align: center; border-radius: 10px; cursor: pointer; }
 
 .modalTitle{ line-height: 30px; padding-bottom: 10px; border-bottom: 1px solid #eee; font-size: 18px; }
 .modalContent{ margin-top: 10px; padding-bottom: 10px; max-height: 440px; overflow-y: auto; }
